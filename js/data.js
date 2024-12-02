@@ -10,7 +10,8 @@ function readData() {
     }
     else {
         return {
-            data,
+            view: 'home-page',
+            favorites: [],
         };
     }
 }
