@@ -6,6 +6,39 @@
   background-color: rgb(223, 207, 192);
 }
 
+label,
+input,
+textarea {
+  width: 100%;
+  display: block;
+}
+
+textarea {
+  width: 100%;
+  padding: 50px;
+  margin-top: 10px;
+}
+
+form {
+  color: rgb(174, 159, 159);
+}
+
+#contact-form {
+  margin-left: 70px;
+}
+
+button {
+  float: right;
+  border-radius: 15px;
+  margin-top: 25px;
+  background-color: rgb(223, 207, 192);
+  padding: 6px;
+}
+
+.contact-container {
+  background-color: rgb(69, 49, 51);
+}
+
 h1 {
   text-align: center;
   font-size: 3.5rem;
@@ -13,6 +46,7 @@ h1 {
   flex-grow: 1; /* Ensure the title occupies more space if needed */
   text-transform: uppercase;
   color: #222;
+  cursor: pointer;
 }
 
 .search-Bar {
@@ -34,6 +68,7 @@ h1 {
   margin-left: 70px;
   display: flex;
   justify-items: center;
+  cursor: pointer;
 }
 
 .homepage-image {
@@ -63,6 +98,45 @@ h1 {
   text-align: center; /* Center the text if it spans multiple lines */
 }
 
+.row.filmography-container {
+  width: 100%;
+}
+
+.column-one-fourth {
+  background-color: rgb(137, 167, 167);
+  width: 100%;
+  padding-top: 40px;
+}
+
+.column-favorites {
+  background-color: rgb(85, 95, 177);
+  width: 100%;
+  padding-top: 40px;
+}
+
+.trademark {
+  background-color: rgb(85, 95, 177);
+}
+
+.film-poster {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.favorites-image {
+  width: 100%;
+  height: 300px;
+}
+
+.favorites-poster {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .bottom {
   background-color: rgb(153, 170, 136);
   color: rgb(212, 202, 202);
@@ -71,6 +145,13 @@ h1 {
   text-align: center;
   align-items: center;
   height: 150px;
+}
+
+.contact-bottom {
+  background-color: rgb(140, 51, 51);
+  color: rgb(205, 195, 195);
+  display: flex;
+  justify-content: center;
 }
 
 h2 {
@@ -92,7 +173,7 @@ h2 {
 }
 
 /* Icon styling */
-.footer-icon {
+.icon {
   font-size: 2rem; /* Adjust icon size */
   color: #333; /* Icon color */
   text-decoration: none;
