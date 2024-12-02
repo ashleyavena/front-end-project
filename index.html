@@ -1,20 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Project</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row navBar">
+          <div class="column-one-third">
+            <a href="#" id="view-films-link" class="films-link">Films</a>
+            <a href="#" id="view-favorites-link" class="favorites-link"
+              >Favorites</a
+            >
+            <a href="#" id="view-contact-link" class="contact-link"
+              >Contact Us</a
+            >
+          </div>
+          <div class="column-one-third"><h1>Studio Ghibli</h1></div>
+          <div class="column-one-third">
+            <input
+              type="text"
+              id="search"
+              class="search-Bar"
+              placeholder="Search" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div data-view="home-page">
+        <div class="row homepageImage">
+          <img
+            src="images/studio-ghibli-aesthetic-desktop-nz5b3a2t5knexi4s.jpg"
+            alt="flowerField"
+            class="homepage-image" />
+        </div>
+        <div class="row bottom">
+          <h2>the most beloved films, all in one place</h2>
+        </div>
+      </div>
+    </main>
+
+    <div data-view="filmography">
+      <div class="filmography-image-container">
+        <img
+          src="images/tumblr_135f8860e99cbb2d22dc92cb841f7544_d3daabb7_1280.jpg"
+          alt="flowerField"
+          class="filmography-image" />
+        <div class="overlay-text">the most beloved films, all in one place</div>
+      </div>
+    </div>
+    <footer class="footer">
+      <a href="#" class="footer-icon">&#127968;</a>
+      <a href="#" class="footer-icon">&#128269;</a>
+      <a href="#" class="footer-icon">&#128151;</a>
+      <a href="#" class="footer-icon">&#128172;</a>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

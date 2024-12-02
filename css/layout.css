@@ -1,0 +1,46 @@
+body,
+h1,
+a,
+input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+@media screen and (width <= 768px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .navBar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-Bar {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  .column-one-third a {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    margin-left: 0;
+  }
+
+  .footer {
+    height: 120px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}

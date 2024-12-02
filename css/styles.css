@@ -1,0 +1,142 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px;
+  background-color: rgb(223, 207, 192);
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 100;
+  flex-grow: 1; /* Ensure the title occupies more space if needed */
+  text-transform: uppercase;
+  color: #222;
+}
+
+.search-Bar {
+  width: 300px;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  margin-top: 15px;
+}
+
+.column-one-third {
+  display: flex;
+}
+
+.column-one-third a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  margin-left: 70px;
+  display: flex;
+  justify-items: center;
+}
+
+.homepage-image {
+  width: 100%;
+}
+
+.filmography-image-container {
+  position: relative; /* Set as the reference point for child elements */
+  width: 100%; /* Adjust width as needed */
+  margin: 0 auto; /* Center the container horizontally if needed */
+}
+
+.filmography-image {
+  width: 100%; /* Ensure the image fills the container */
+  display: block; /* Remove extra spacing below the image */
+}
+
+.overlay-text {
+  position: absolute; /* Position the text relative to the container */
+  top: 50%; /* Vertically center the text */
+  left: 50%; /* Horizontally center the text */
+  transform: translate(-50%, -50%); /* Adjust for the text's size */
+  color: white; /* Text color */
+  font-size: 2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Optional: make the text bold */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Optional: add a shadow for better visibility */
+  text-align: center; /* Center the text if it spans multiple lines */
+}
+
+.bottom {
+  background-color: rgb(153, 170, 136);
+  color: rgb(212, 202, 202);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 150px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+/* General Footer Styling */
+.footer {
+  background-color: rgb(223, 207, 192);
+  color: rgb(212, 202, 202);
+  justify-content: space-around; /* Space out the icons evenly */
+  align-items: center; /* Center icons vertically */
+  padding: 10px;
+  position: fixed; /* Keep footer at the bottom of the screen */
+  bottom: 0;
+  width: 100%;
+  display: none; /* Hide the footer by default */
+}
+
+/* Icon styling */
+.footer-icon {
+  font-size: 2rem; /* Adjust icon size */
+  color: #333; /* Icon color */
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px;
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.footer-icon:hover {
+  transform: scale(1.2); /* Scale up the icon on hover */
+}
+
+/* Show the footer only on mobile */
+@media screen and (width <= 768px) {
+  .navBar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .column-one-third {
+    width: 100%;
+  }
+
+  .homepage-image {
+    padding: 0;
+  }
+
+  .footer {
+    display: flex; /* Show the footer on mobile */
+  }
+
+  .footer-icon {
+    font-size: 2.5rem; /* Larger icons for better touchability */
+  }
+
+  .search-Bar,
+  .column-one-third a {
+    display: none;
+  }
+}
+
+/* Footer hidden on desktop */
+@media screen and (width >= 769px) {
+  .footer {
+    display: none; /* Hide the footer on desktop */
+  }
+}
