@@ -65,6 +65,7 @@ function viewSwap(viewName) {
         $favoritesView.classList.add('hidden');
         $contactFormView.classList.remove('hidden');
     }
+    writeData();
 }
 document.addEventListener('DOMContentLoaded', () => {
     viewSwap(data.view);
