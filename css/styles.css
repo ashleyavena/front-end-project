@@ -1,0 +1,349 @@
+.row.navBar {
+  background-color: rgb(212, 202, 202);
+}
+
+.navBarLink {
+  display: none;
+}
+
+.search-Bar {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #222;
+  cursor: pointer;
+}
+
+.homepage-link {
+  text-decoration:;
+}
+
+.homepage-image {
+  background-image: url('../images/studio-ghibli-aesthetic-desktop-nz5b3a2t5knexi4s.jpg');
+  background-size: cover;
+  background-position: right center;
+  width: 100%;
+  height: 700px;
+}
+
+.homepage-bottom {
+  background-color: rgb(153, 170, 136);
+  color: rgb(255, 251, 251);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mobile-line-break {
+  display: block;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.footer {
+  background-color: rgb(223, 207, 192);
+  color: rgb(212, 202, 202);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+
+.icon {
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
+
+.filmography-image {
+  background-image: url('../images/tumblr_135f8860e99cbb2d22dc92cb841f7544_d3daabb7_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100px;
+}
+
+.overlay-text {
+  display: none;
+}
+
+.filmography-container {
+  background-color: rgb(144, 194, 231);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.film-poster {
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.favorites-page-container {
+  background-color: rgb(30, 91, 138);
+}
+
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  padding: 10px;
+}
+
+.favorites-image {
+  background-image: url('../images/Screenshot\ 2024-12-02\ at\ 9.24.07\ AM.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100px;
+}
+
+.favorites-poster {
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  background-color: rgb(69, 49, 51);
+  color: white;
+}
+
+.contact-image-container {
+  position: relative;
+}
+
+.contact-mobile-image {
+  background-image: url('../images/download-2.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100px;
+}
+
+.contact-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%); /* Exact centering */
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+#contact-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.contact-form-image,
+.contact-bottom h2 {
+  display: none;
+}
+
+label {
+  margin-right: 65%;
+  padding: 5px;
+}
+
+.input-box {
+  flex: 2;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  margin-top: 10px;
+}
+
+textarea {
+  margin: 10px;
+  padding: 50px;
+  width: 90%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 1px solid rgb(150, 66, 233);
+  box-shadow: 0 0 1px 1px rgba(150, 66, 233, 0.6);
+}
+
+button {
+  border-radius: 15px;
+  margin-top: 25px;
+  background-color: rgb(223, 207, 192);
+  padding: 6px;
+  cursor: pointer;
+  width: 20%;
+  margin-left: 60%;
+}
+
+h4 {
+  display: none;
+}
+
+@media screen and (width >= 768px) {
+  .mobile-line-break {
+    display: inline;
+  }
+
+  h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px;
+    background-color: rgb(223, 207, 192);
+  }
+
+  .navBarLink {
+    display: inline;
+  }
+
+  .search-Bar {
+    display: inline-flex;
+    width: 300px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+  }
+
+  .column-one-third {
+    display: flex;
+  }
+
+  .column-one-third a {
+    text-decoration: none;
+    color: #f6f1f1;
+    font-size: 1rem;
+    margin-left: 70px;
+    display: flex;
+    justify-items: center;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .filmography-image {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .film-image-container {
+    position: relative;
+  }
+
+  .overlay-text {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: lighter;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  .filmography-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .favorites-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  h4 {
+    display: inline-flex;
+    margin-right: auto;
+    font-size: 2rem;
+    font-weight: 100;
+    padding-bottom: 20px;
+  }
+
+  .contact-overlay-text {
+    display: none;
+  }
+
+  #contact-form {
+    width: 100%;
+    padding: 20px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+    padding-bottom: 3rem;
+  }
+
+  .contact-form-image {
+    display: inline;
+    width: 100%;
+  }
+
+  .column-half {
+    display: flex;
+    width: 100%;
+  }
+
+  .contact-page {
+    display: flex;
+  }
+
+  .contact-bottom h2 {
+    margin-top: 30px;
+    display: inline;
+  }
+
+  .contact-bottom {
+    background-color: rgb(136, 81, 87);
+    color: rgb(205, 195, 195);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .contact-mobile-image {
+    display: none;
+  }
+
+  .footer {
+    display: none;
+  }
+}
