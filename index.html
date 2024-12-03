@@ -1,20 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Project</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div data-view="navigation-bar">
+          <div class="row navBar">
+            <div class="column-one-third">
+              <a href="#" id="view-films-link" class="films-link navBarLink"
+                >Films</a
+              >
+              <a
+                href="#"
+                id="view-favorites-link"
+                class="favorites-link navBarLink"
+                >Favorites</a
+              >
+              <a href="#" id="view-contact-link" class="contact-link navBarLink"
+                >Contact Us</a
+              >
+            </div>
+            <div class="column-one-third">
+              <a href="#" id="homepage-link" class="homepage-link">
+                <h1>Studio Ghibli</h1></a
+              >
+            </div>
+            <div class="column-one-third">
+              <input
+                type="text"
+                id="search"
+                class="search-Bar"
+                placeholder="Search" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div data-view="home-page">
+        <div class="row homepageImage">
+          <div class="homepage-image"></div>
+        </div>
+        <div class="row homepage-bottom">
+          <h2>
+            the most beloved films,
+            <span class="mobile-line-break"> all in one place</span>
+          </h2>
+        </div>
+      </div>
+    </main>
+
+    <div class="filmography-page-container">
+      <div data-view="filmography">
+        <div class="film-image-container">
+          <img
+            src="images/tumblr_135f8860e99cbb2d22dc92cb841f7544_d3daabb7_1280.jpg"
+            alt="flowerField"
+            class="filmography-image" />
+          <div class="overlay-text">
+            the most beloved films, all in one place
+          </div>
+        </div>
+        <div class="row filmography-container">
+          <!-- <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="film-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="film-poster" /> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="favorites-page-container">
+      <div data-view="favorites">
+        <img
+          src="images/Screenshot 2024-12-02 at 9.24.07 AM.png"
+          alt="flowerField"
+          class="favorites-image" />
+
+        <div class="row favorites-container">
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+
+          <img
+            src="images/61ON14PVzoL._AC_UF894,1000_QL80_.jpg"
+            alt="movie-poster"
+            class="favorites-poster" />
+          <div class="trademark">スタジオジブリ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-container">
+      <div data-view="entry-form">
+        <div class="contact-image-container">
+          <img
+            src="images/download-2.jpg"
+            alt="flowerField"
+            class="contact-mobile-image" />
+          <div class="contact-overlay-text">Contact Us</div>
+        </div>
+
+        <div class="row contact-page">
+          <div class="column-half">
+            <form id="contact-form">
+              <h4>Contact Us</h4>
+              <label for="name">Name</label>
+              <input type="text" id="name" class="input-box" required />
+              <label for="email">Email</label>
+              <input type="text" id="email" class="input-box" required />
+              <label for="comments">Comments</label>
+              <textarea id="comments" class="comment-box"></textarea>
+              <button type="submit" id="submit-button">SUBMIT</button>
+            </form>
+          </div>
+          <div class="column-half">
+            <img
+              src="images/1200_Miyazaki_Spirited-Away_002.jpg"
+              alt="noFaceImage"
+              class="contact-form-image" />
+          </div>
+        </div>
+        <div class="row contact-bottom">
+          <h2>contact us for any and all inqueries</h2>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-container">
+      <div class="footer">
+        <a href="#" class="fa-solid fa-film icon"></a>
+        <a href="#" class="fa-solid fa-magnifying-glass icon"></a>
+        <a href="#" class="fa-regular fa-heart icon"></a>
+        <a href="#" class="fa-regular fa-paper-plane icon"></a>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
