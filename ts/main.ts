@@ -42,13 +42,12 @@ async function filmsData(): Promise<void> {
       filmographyContainer.appendChild(filmPoster);
     });
 
-    // const data = await response.json();
-    // console.log('data', data[0].image);
+    const data = await response.json();
+    console.log('data', data[0].image);
   } catch (error) {
     console.error('error', error);
   }
 }
-// filmsData();
 
 async function imageData(): Promise<void> {
   try {

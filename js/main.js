@@ -18,14 +18,13 @@ async function filmsData() {
             filmPoster.classList.add('film-poster');
             filmographyContainer.appendChild(filmPoster);
         });
-        // const data = await response.json();
-        // console.log('data', data[0].image);
+        const data = await response.json();
+        console.log('data', data[0].image);
     }
     catch (error) {
         console.error('error', error);
     }
 }
-// filmsData();
 async function imageData() {
     try {
         const response = await fetch('https://ghibliapi.vercel.app/films/2baf70d1-42bb-4437-b551-e5fed5a87abe');
