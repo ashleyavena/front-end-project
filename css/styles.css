@@ -163,27 +163,22 @@ h2 {
 .footer {
   background-color: rgb(223, 207, 192);
   color: rgb(212, 202, 202);
-  justify-content: space-around; /* Space out the icons evenly */
-  align-items: center; /* Center icons vertically */
+  justify-content: space-around;
+  align-items: center;
   padding: 10px;
   position: fixed; /* Keep footer at the bottom of the screen */
   bottom: 0;
   width: 100%;
-  display: none; /* Hide the footer by default */
+  display: flex;
 }
 
-/* Icon styling */
 .icon {
-  font-size: 2rem; /* Adjust icon size */
-  color: #333; /* Icon color */
+  font-size: 2rem;
+  color: #333;
   text-decoration: none;
-  display: inline-block;
   padding: 10px;
-  transition: transform 0.3s ease; /* Smooth hover effect */
-}
-
-.footer-icon:hover {
-  transform: scale(1.2); /* Scale up the icon on hover */
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
 }
 
 /* Show the footer only on mobile */
@@ -206,7 +201,7 @@ h2 {
   }
 
   .footer-icon {
-    font-size: 2.5rem; /* Larger icons for better touchability */
+    font-size: 2.5rem;
   }
 
   .search-Bar,
@@ -218,6 +213,6 @@ h2 {
 /* Footer hidden on desktop */
 @media screen and (width >= 769px) {
   .footer {
-    display: none; /* Hide the footer on desktop */
+    display: none;
   }
 }

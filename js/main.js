@@ -40,7 +40,6 @@ const $contactFormView = document.querySelector('[data-view="entry-form"]');
 if (!$contactFormView)
     throw new Error('$contactFormView not found ');
 function viewSwap(viewName) {
-    debugger;
     data.view = viewName;
     if (viewName === 'home-page') {
         $homepageView.classList.remove('hidden');
@@ -70,6 +69,9 @@ function viewSwap(viewName) {
 document.addEventListener('DOMContentLoaded', () => {
     viewSwap(data.view);
 });
+const $homeTab = document.querySelector('.homepage-link');
+if (!$homeTab)
+    throw new Error('$homeTab not found');
 const $filmsTab = document.querySelector('.films-link');
 if (!$filmsTab)
     throw new Error('$filmsTab not found');
@@ -79,6 +81,9 @@ if (!$favoritesTab)
 const $contactTab = document.querySelector('.contact-link');
 if (!$contactTab)
     throw new Error('$contactTab not found');
+$homeTab.addEventListener('click', () => {
+    viewSwap('home-page');
+});
 $filmsTab.addEventListener('click', () => {
     viewSwap('filmography');
 });
@@ -86,5 +91,25 @@ $favoritesTab.addEventListener('click', () => {
     viewSwap('favorites');
 });
 $contactTab.addEventListener('click', () => {
+    viewSwap('entry-form');
+});
+// const $homeIcon = document.querySelector('.homepage-link');
+// if (!$homeIcon) throw new Error('$homeIcon not found');
+const $filmIcon = document.querySelector('.fa-film');
+if (!$filmIcon)
+    throw new Error('$filmIcon not found');
+const $favoritesIcon = document.querySelector('.fa-heart');
+if (!$favoritesIcon)
+    throw new Error('$favoritesIcon not found');
+const $contactIcon = document.querySelector('.fa-paper-plane');
+if (!$contactIcon)
+    throw new Error('$contactIcon not found');
+$filmIcon.addEventListener('click', () => {
+    viewSwap('filmography');
+});
+$favoritesIcon.addEventListener('click', () => {
+    viewSwap('favorites');
+});
+$contactIcon.addEventListener('click', () => {
     viewSwap('entry-form');
 });
