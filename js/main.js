@@ -5,14 +5,27 @@ async function filmsData() {
         if (!response.ok) {
             throw new Error(`http error! Status: ${response.status}`);
         }
-        const data = await response.json();
-        console.log('data', data[0].image);
+        const films = await response.json();
+        const filmographyContainer = document.querySelector('.filmography-container');
+        if (!filmographyContainer) {
+            throw new Error('filmography container not found');
+        }
+        filmographyContainer.innerHTML = '';
+        films.forEach((film) => {
+            const filmPoster = document.createElement('img');
+            filmPoster.src = film.image;
+            filmPoster.alt = `Poster of ${film.title}`;
+            filmPoster.classList.add('film-poster');
+            filmographyContainer.appendChild(filmPoster);
+        });
+        // const data = await response.json();
+        // console.log('data', data[0].image);
     }
     catch (error) {
         console.error('error', error);
     }
 }
-filmsData();
+// filmsData();
 async function imageData() {
     try {
         const response = await fetch('https://ghibliapi.vercel.app/films/2baf70d1-42bb-4437-b551-e5fed5a87abe');
@@ -69,6 +82,7 @@ function viewSwap(viewName) {
 }
 document.addEventListener('DOMContentLoaded', () => {
     viewSwap(data.view);
+    filmsData();
 });
 const $homeTab = document.querySelector('.homepage-link');
 if (!$homeTab)

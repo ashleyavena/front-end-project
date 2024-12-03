@@ -20,7 +20,7 @@ h1 {
 }
 
 .homepage-link {
-  text-decoration:;
+  text-decoration: none;
 }
 
 .homepage-image {
@@ -91,6 +91,8 @@ h1 {
   gap: 20px;
   justify-content: center;
   padding: 10px;
+
+  /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
 }
 
 .film-poster {
@@ -98,6 +100,12 @@ h1 {
   height: auto;
   max-width: 150px;
   margin: 0 auto;
+  border: 5px solid #050404;
+  transition: transform 0.2s ease-in-out;
+}
+
+.film-poster:hover {
+  transform: scale(1.1);
 }
 
 .favorites-page-container {
@@ -263,6 +271,15 @@ h4 {
     margin: 0 auto;
   }
 
+  .film-poster {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    margin: 0 auto;
+    border: 5px solid #050404;
+    transition: transform 0.2s ease-in-out;
+  }
+
   .film-image-container {
     position: relative;
   }
@@ -279,11 +296,16 @@ h4 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   }
 
+  .filmography-page-container {
+    background-color: rgb(144, 194, 231);
+  }
+
   .filmography-container {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    margin-top: 30px;
   }
 
   .favorites-container {

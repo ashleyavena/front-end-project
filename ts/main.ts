@@ -25,13 +25,30 @@ async function filmsData(): Promise<void> {
     if (!response.ok) {
       throw new Error(`http error! Status: ${response.status}`);
     }
-    const data = await response.json();
-    console.log('data', data[0].image);
+    const films: Data[] = await response.json();
+    const filmographyContainer = document.querySelector(
+      '.filmography-container',
+    ) as HTMLElement;
+    if (!filmographyContainer) {
+      throw new Error('filmography container not found');
+    }
+    filmographyContainer.innerHTML = '';
+
+    films.forEach((film) => {
+      const filmPoster = document.createElement('img');
+      filmPoster.src = film.image;
+      filmPoster.alt = `Poster of ${film.title}`;
+      filmPoster.classList.add('film-poster');
+      filmographyContainer.appendChild(filmPoster);
+    });
+
+    // const data = await response.json();
+    // console.log('data', data[0].image);
   } catch (error) {
     console.error('error', error);
   }
 }
-filmsData();
+// filmsData();
 
 async function imageData(): Promise<void> {
   try {
@@ -98,6 +115,7 @@ function viewSwap(viewName: string): any {
 
 document.addEventListener('DOMContentLoaded', () => {
   viewSwap(data.view);
+  filmsData();
 });
 
 const $homeTab = document.querySelector('.homepage-link');
