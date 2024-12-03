@@ -35,36 +35,16 @@ async function filmsData(): Promise<void> {
     filmographyContainer.innerHTML = '';
 
     films.forEach((film) => {
-      const filmPoster = document.createElement('img');
-      filmPoster.src = film.image;
-      filmPoster.alt = `Poster of ${film.title}`;
-      filmPoster.classList.add('film-poster');
-      filmographyContainer.appendChild(filmPoster);
+      const $filmPoster = document.createElement('img');
+      $filmPoster.src = film.image;
+      $filmPoster.alt = `Poster of ${film.title}`;
+      $filmPoster.classList.add('film-poster');
+      filmographyContainer.appendChild($filmPoster);
     });
-
-    const data = await response.json();
-    console.log('data', data[0].image);
   } catch (error) {
     console.error('error', error);
   }
 }
-
-async function imageData(): Promise<void> {
-  try {
-    const response = await fetch(
-      'https://ghibliapi.vercel.app/films/2baf70d1-42bb-4437-b551-e5fed5a87abe',
-    );
-    if (!response.ok) {
-      throw new Error(`http error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log('data', data.image);
-  } catch (error) {
-    console.error('error', error);
-  }
-}
-
-imageData();
 
 const $homepageView = document.querySelector(
   '[data-view="home-page"]',
@@ -144,9 +124,6 @@ $favoritesTab.addEventListener('click', () => {
 $contactTab.addEventListener('click', () => {
   viewSwap('entry-form');
 });
-
-// const $homeIcon = document.querySelector('.homepage-link');
-// if (!$homeIcon) throw new Error('$homeIcon not found');
 
 const $filmIcon = document.querySelector('.fa-film');
 if (!$filmIcon) throw new Error('$filmIcon not found');
