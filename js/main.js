@@ -6,22 +6,104 @@ async function filmsData() {
             throw new Error(`http error! Status: ${response.status}`);
         }
         const films = await response.json();
-        const filmographyContainer = document.querySelector('.filmography-container');
-        if (!filmographyContainer) {
+        const $filmographyContainer = document.querySelector('.filmography-container');
+        if (!$filmographyContainer) {
             throw new Error('filmography container not found');
         }
-        filmographyContainer.innerHTML = '';
+        $filmographyContainer.innerHTML = '';
         films.forEach((film) => {
+            const $filmCard = document.createElement('div');
+            $filmCard.classList.add('film-card');
             const $filmPoster = document.createElement('img');
             $filmPoster.src = film.image;
             $filmPoster.alt = `Poster of ${film.title}`;
             $filmPoster.classList.add('film-poster');
-            filmographyContainer.appendChild($filmPoster);
+            $filmographyContainer.appendChild($filmPoster);
+            const $heartIcon = document.createElement('i');
+            $heartIcon.classList.add('fa-regular', 'fa-heart', 'empty-heart');
+            $heartIcon.setAttribute('data-id', film.id);
+            $filmCard.appendChild($filmPoster);
+            $filmCard.appendChild($heartIcon);
+            $filmographyContainer.appendChild($filmCard);
+            // $heartIcon.addEventListener('click', () => {
+            //   toggleFavorite(film.id, film.image, $heartIcon);
+            //   $heartIcon.classList.toggle('filled');
+            // $filmCard.appendChild($filmPoster);
+            // $filmCard.appendChild($heartIcon);
+            // $filmographyContainer.appendChild($filmCard);
+            // $filmographyContainer.appendChild($heartIcon);
         });
     }
-    catch (error) {
-        console.error('error', error);
+    finally { }
+    ;
+}
+try { }
+catch (error) {
+    console.error('error', error);
+}
+let favorites = [];
+document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.classList.contains('empty-heart')) {
+        const movieID = target.getAttribute('data-id');
+        if (!movieID)
+            return;
+        if (favorites.includes(movieID)) {
+            favorites = favorites.filter((id) => id !== movieID);
+            target.classList.remove('filled');
+        }
+        else {
+            favorites.push(movieID);
+            target.classList.add('filled');
+        }
     }
+});
+// function toggleFavorite(
+//   movieID: string,
+//   imageURL: string,
+//   icon: HTMLElement,
+// ): void {
+//   const isFavorite = data.favorites.some((fav) => fav.name === movieID);
+//   if (isFavorite) {
+//     data.favorites = data.favorites.filter((fav) => fav.name !== movieID);
+//     icon.classList.remove('filled');
+//   } else {
+//     data.favorites.push({ name: movieID, photoURL: imageURL });
+//     icon.classList.add('filled');
+//   }
+//   writeData();
+// updateFavoritesPage();
+// }
+document.addEventListener('DOMContentLoaded', () => {
+    viewSwap(data.view);
+    filmsData();
+    // updateFavoritesPage();
+});
+// function updateFavoritesPage(): void{
+//   const favoritesContainer = document.querySelector('.favorites-container')
+//   if (!favoritesContainer) return;
+//   favoritesContainer.innerHTML='';
+//   favorites.forEach((id)=>{
+//     const movie = getMovieById(id)  *// assuming you have a function too get movie by ID
+//     const moviePoster= `<img src="${movie.image}"`
+//     favoritesContainer.innerHTML += moviePoster
+//   })
+// }
+function updateFavoritesPage() {
+    const $favoritesContainer = document.querySelector('.favorites-container');
+    if (!$favoritesContainer)
+        return;
+    $favoritesContainer.innerHTML = ''; // Clear current content
+    data.favorites.forEach((favorite) => {
+        const $favoriteCard = document.createElement('div');
+        $favoriteCard.classList.add('favorite-card');
+        const $favoritePoster = document.createElement('img');
+        $favoritePoster.src = favorite.photoURL;
+        $favoritePoster.alt = favorite.name;
+        $favoritePoster.classList.add('favorites-poster');
+        $favoriteCard.appendChild($favoritePoster);
+        $favoritesContainer.appendChild($favoriteCard);
+    });
 }
 const $homepageView = document.querySelector('[data-view="home-page"]');
 if (!$homepageView)
@@ -63,10 +145,6 @@ function viewSwap(viewName) {
     }
     writeData();
 }
-document.addEventListener('DOMContentLoaded', () => {
-    viewSwap(data.view);
-    filmsData();
-});
 const $homeTab = document.querySelector('.homepage-link');
 if (!$homeTab)
     throw new Error('$homeTab not found');

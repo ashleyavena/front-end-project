@@ -100,6 +100,12 @@ h1 {
   /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
 }
 
+.film-card {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
 .film-poster {
   width: 100%;
   height: auto;
@@ -107,6 +113,24 @@ h1 {
   margin: 0 auto;
   border: 5px solid #050404;
   transition: transform 0.2s ease-in-out;
+}
+
+.empty-heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.empty-heart:hover {
+  transform: scale(1.1);
+}
+
+.empty-heart.filled {
+  color: red;
 }
 
 .film-poster:hover {
@@ -298,6 +322,12 @@ h4 {
     object-fit: cover;
   }
 
+  .film-card {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
   .film-poster {
     width: 100%;
     height: auto;
@@ -310,6 +340,29 @@ h4 {
   .film-image-container {
     position: relative;
   }
+
+  /* comment */
+
+  .filmography-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .empty-heart {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .empty-heart.filled {
+    color: red;
+  }
+
+  /* comment */
 
   .overlay-text {
     display: flex;
