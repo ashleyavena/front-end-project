@@ -238,3 +238,5 @@ $favoritesIcon.addEventListener('click', () => {
 $contactIcon.addEventListener('click', () => {
   viewSwap('entry-form');
 });
+
+// *// comment
