@@ -2,6 +2,7 @@
 function writeData() {
     const dataJSON = JSON.stringify(data);
     localStorage.setItem('data-storage', dataJSON);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 function readData() {
     const dataJSON = localStorage.getItem('data-storage');

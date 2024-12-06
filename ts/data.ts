@@ -11,6 +11,7 @@ interface GlobalData {
 function writeData(): void {
   const dataJSON: string = JSON.stringify(data);
   localStorage.setItem('data-storage', dataJSON);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
 function readData(): GlobalData {

@@ -18,93 +18,116 @@ async function filmsData() {
             $filmPoster.src = film.image;
             $filmPoster.alt = `Poster of ${film.title}`;
             $filmPoster.classList.add('film-poster');
-            $filmographyContainer.appendChild($filmPoster);
             const $heartIcon = document.createElement('i');
             $heartIcon.classList.add('fa-regular', 'fa-heart', 'empty-heart');
             $heartIcon.setAttribute('data-id', film.id);
+            $filmPoster.addEventListener('click', () => {
+                showMovieDetails(film.id); // Pass the movie ID to fetch details
+            });
+            if (favorites.some((fav) => fav.name === film.title)) {
+                console.log(`movie poster clicked of ${film.title}`);
+                $heartIcon.classList.add('filled'); // Mark as filled if it's a favorite
+            }
+            // Add the click event to toggle heart state
+            $heartIcon.addEventListener('click', () => {
+                const movieID = film.id;
+                const movieImage = film.image;
+                const movieTitle = film.title;
+                if (favorites.some((fav) => fav.name === movieTitle)) {
+                    favorites = favorites.filter((fav) => fav.name !== movieTitle);
+                    $heartIcon.classList.remove('filled'); // Remove filled class if it's removed from favorites
+                }
+                else {
+                    favorites.push({ name: movieTitle, photoURL: movieImage });
+                    $heartIcon.classList.add('filled'); // Add filled class if it's added to favorites
+                }
+                writeData(); // Save updated favorites to localStorage
+            });
             $filmCard.appendChild($filmPoster);
             $filmCard.appendChild($heartIcon);
             $filmographyContainer.appendChild($filmCard);
-            // $heartIcon.addEventListener('click', () => {
-            //   toggleFavorite(film.id, film.image, $heartIcon);
-            //   $heartIcon.classList.toggle('filled');
-            // $filmCard.appendChild($filmPoster);
-            // $filmCard.appendChild($heartIcon);
-            // $filmographyContainer.appendChild($filmCard);
-            // $filmographyContainer.appendChild($heartIcon);
         });
     }
-    finally { }
-    ;
+    catch (error) {
+        console.error('error', error);
+    }
 }
-try { }
-catch (error) {
-    console.error('error', error);
+async function showMovieDetails(movieId) {
+    try {
+        const response = await fetch(`https://ghibliapi.vercel.app/films/${movieId}`);
+        if (!response.ok) {
+            throw new Error(`http error! Status: ${response.status}`);
+        }
+        const movie = await response.json();
+        console.log('Movie data:', movie);
+        // Update the movie details section
+        const $detailsContainer = document.querySelector('.movie-details-container');
+        const $moviePoster = document.querySelector('.movie-poster');
+        const $movieTitle = document.querySelector('.movie-title');
+        const $movieDescription = document.querySelector('.movie-description');
+        const $movieDirector = document.querySelector('.movie-director');
+        const $movieProducer = document.querySelector('.movie-producer');
+        const $movieReleaseDate = document.querySelector('.movie-release-date');
+        const $movieRunningTime = document.querySelector('.movie-running-time');
+        const $movieRtScore = document.querySelector('.movie-rt-score');
+        $moviePoster.src = movie.image ?? 'default image.png';
+        $movieTitle.textContent = movie.title ?? 'default title.png';
+        $movieDescription.textContent =
+            movie.description ?? 'default desription.png';
+        $movieDirector.textContent = movie.director ?? 'default director.png';
+        $movieProducer.textContent = movie.producer ?? 'default producer.png';
+        $movieReleaseDate.textContent = new Date(movie.releaseDate).toLocaleDateString();
+        $movieRunningTime.textContent = `${movie.runningTime} minutes`;
+        // $movieRtScore.textContent = movie.rtScore.toString();
+        viewSwap('movie-details');
+        // Show the details page and hide the filmography page
+        const $filmographyView = document.querySelector('[data-view="filmography"]');
+        const $movieDetailsView = document.querySelector('.movie-details-container');
+        $filmographyView.classList.add('hidden');
+        $movieDetailsView.classList.remove('hidden');
+        // Back button event
+        const $backButton = document.querySelector('.back-button');
+        $backButton.addEventListener('click', () => {
+            $movieDetailsView.classList.add('hidden');
+            $filmographyView.classList.remove('hidden');
+        });
+    }
+    catch (error) {
+        console.error('Error fetching movie details:', error);
+    }
 }
 let favorites = [];
-document.addEventListener('click', (event) => {
-    const target = event.target;
-    if (target.classList.contains('empty-heart')) {
-        const movieID = target.getAttribute('data-id');
-        if (!movieID)
-            return;
-        if (favorites.includes(movieID)) {
-            favorites = favorites.filter((id) => id !== movieID);
-            target.classList.remove('filled');
-        }
-        else {
-            favorites.push(movieID);
-            target.classList.add('filled');
-        }
-    }
-});
-// function toggleFavorite(
-//   movieID: string,
-//   imageURL: string,
-//   icon: HTMLElement,
-// ): void {
-//   const isFavorite = data.favorites.some((fav) => fav.name === movieID);
-//   if (isFavorite) {
-//     data.favorites = data.favorites.filter((fav) => fav.name !== movieID);
-//     icon.classList.remove('filled');
-//   } else {
-//     data.favorites.push({ name: movieID, photoURL: imageURL });
-//     icon.classList.add('filled');
-//   }
-//   writeData();
-// updateFavoritesPage();
-// }
-document.addEventListener('DOMContentLoaded', () => {
-    viewSwap(data.view);
-    filmsData();
-    // updateFavoritesPage();
-});
-// function updateFavoritesPage(): void{
-//   const favoritesContainer = document.querySelector('.favorites-container')
-//   if (!favoritesContainer) return;
-//   favoritesContainer.innerHTML='';
-//   favorites.forEach((id)=>{
-//     const movie = getMovieById(id)  *// assuming you have a function too get movie by ID
-//     const moviePoster= `<img src="${movie.image}"`
-//     favoritesContainer.innerHTML += moviePoster
-//   })
-// }
 function updateFavoritesPage() {
     const $favoritesContainer = document.querySelector('.favorites-container');
     if (!$favoritesContainer)
         return;
-    $favoritesContainer.innerHTML = ''; // Clear current content
-    data.favorites.forEach((favorite) => {
+    $favoritesContainer.innerHTML = ''; // Clear existing content
+    favorites.forEach((favorite) => {
         const $favoriteCard = document.createElement('div');
         $favoriteCard.classList.add('favorite-card');
         const $favoritePoster = document.createElement('img');
         $favoritePoster.src = favorite.photoURL;
         $favoritePoster.alt = favorite.name;
         $favoritePoster.classList.add('favorites-poster');
+        const $favoriteTitle = document.createElement('div');
+        $favoriteTitle.classList.add('favorite-title');
+        $favoriteTitle.textContent = favorite.name;
         $favoriteCard.appendChild($favoritePoster);
+        $favoriteCard.appendChild($favoriteTitle);
         $favoritesContainer.appendChild($favoriteCard);
     });
+    writeData();
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+        favorites = JSON.parse(storedFavorites);
+    }
+    viewSwap(data.view);
+    filmsData();
+    updateFavoritesPage();
+});
+// comment
 const $homepageView = document.querySelector('[data-view="home-page"]');
 if (!$homepageView)
     throw new Error('$homepageView not found ');
@@ -117,6 +140,7 @@ if (!$favoritesView)
 const $contactFormView = document.querySelector('[data-view="entry-form"]');
 if (!$contactFormView)
     throw new Error('$contactFormView not found ');
+const $detailsContainer = document.querySelector('.movie-details-container');
 function viewSwap(viewName) {
     data.view = viewName;
     if (viewName === 'home-page') {
@@ -124,24 +148,29 @@ function viewSwap(viewName) {
         $filmographyView.classList.add('hidden');
         $favoritesView.classList.add('hidden');
         $contactFormView.classList.add('hidden');
+        $detailsContainer.classList.add('hidden');
     }
     else if (viewName === 'filmography') {
         $homepageView.classList.add('hidden');
         $filmographyView.classList.remove('hidden');
         $favoritesView.classList.add('hidden');
         $contactFormView.classList.add('hidden');
+        $detailsContainer.classList.add('hidden');
     }
     else if (viewName === 'favorites') {
         $homepageView.classList.add('hidden');
         $filmographyView.classList.add('hidden');
         $favoritesView.classList.remove('hidden');
         $contactFormView.classList.add('hidden');
+        $detailsContainer.classList.add('hidden');
+        updateFavoritesPage();
     }
     else if (viewName === 'entry-form') {
         $homepageView.classList.add('hidden');
         $filmographyView.classList.add('hidden');
         $favoritesView.classList.add('hidden');
         $contactFormView.classList.remove('hidden');
+        $detailsContainer.classList.add('hidden');
     }
     writeData();
 }
