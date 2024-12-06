@@ -26,22 +26,21 @@ async function filmsData() {
             });
             if (favorites.some((fav) => fav.name === film.title)) {
                 console.log(`movie poster clicked of ${film.title}`);
-                $heartIcon.classList.add('filled'); // Mark as filled if it's a favorite
+                $heartIcon.classList.add('filled');
             }
-            // Add the click event to toggle heart state
             $heartIcon.addEventListener('click', () => {
                 const movieID = film.id;
                 const movieImage = film.image;
                 const movieTitle = film.title;
                 if (favorites.some((fav) => fav.name === movieTitle)) {
                     favorites = favorites.filter((fav) => fav.name !== movieTitle);
-                    $heartIcon.classList.remove('filled'); // Remove filled class if it's removed from favorites
+                    $heartIcon.classList.remove('filled');
                 }
                 else {
                     favorites.push({ name: movieTitle, photoURL: movieImage });
-                    $heartIcon.classList.add('filled'); // Add filled class if it's added to favorites
+                    $heartIcon.classList.add('filled');
                 }
-                writeData(); // Save updated favorites to localStorage
+                writeData();
             });
             $filmCard.appendChild($filmPoster);
             $filmCard.appendChild($heartIcon);
@@ -60,7 +59,6 @@ async function showMovieDetails(movieId) {
         }
         const movie = await response.json();
         console.log('Movie data:', movie);
-        // Update the movie details section
         const $detailsContainer = document.querySelector('.movie-details-container');
         const $moviePoster = document.querySelector('.movie-poster');
         const $movieTitle = document.querySelector('.movie-title');
@@ -83,12 +81,10 @@ async function showMovieDetails(movieId) {
         $movieRunningTime.textContent = `${movie.running_time} minutes`;
         $movieRtScore.textContent = movie.rt_score.toString();
         viewSwap('movie-details');
-        // Show the details page and hide the filmography page
         const $filmographyView = document.querySelector('[data-view="filmography"]');
         const $movieDetailsView = document.querySelector('.movie-details-container');
         $filmographyView.classList.add('hidden');
         $movieDetailsView.classList.remove('hidden');
-        // Back button event
         const $backButton = document.querySelector('.back-button');
         $backButton.addEventListener('click', () => {
             $movieDetailsView.classList.add('hidden');
@@ -101,10 +97,12 @@ async function showMovieDetails(movieId) {
 }
 let favorites = [];
 function updateFavoritesPage() {
+    const $favoritesPageContainer = document.createElement('div');
+    $favoritesPageContainer.classList.add('favorites-page-container');
     const $favoritesContainer = document.querySelector('.favorites-container');
     if (!$favoritesContainer)
         return;
-    $favoritesContainer.innerHTML = ''; // Clear existing content
+    $favoritesContainer.innerHTML = '';
     favorites.forEach((favorite) => {
         const $favoriteCard = document.createElement('div');
         $favoriteCard.classList.add('favorite-card');

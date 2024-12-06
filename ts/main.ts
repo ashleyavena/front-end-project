@@ -54,10 +54,9 @@ async function filmsData(): Promise<void> {
 
       if (favorites.some((fav) => fav.name === film.title)) {
         console.log(`movie poster clicked of ${film.title}`);
-        $heartIcon.classList.add('filled'); // Mark as filled if it's a favorite
+        $heartIcon.classList.add('filled');
       }
 
-      // Add the click event to toggle heart state
       $heartIcon.addEventListener('click', () => {
         const movieID = film.id;
         const movieImage = film.image;
@@ -65,13 +64,13 @@ async function filmsData(): Promise<void> {
 
         if (favorites.some((fav) => fav.name === movieTitle)) {
           favorites = favorites.filter((fav) => fav.name !== movieTitle);
-          $heartIcon.classList.remove('filled'); // Remove filled class if it's removed from favorites
+          $heartIcon.classList.remove('filled');
         } else {
           favorites.push({ name: movieTitle, photoURL: movieImage });
-          $heartIcon.classList.add('filled'); // Add filled class if it's added to favorites
+          $heartIcon.classList.add('filled');
         }
 
-        writeData(); // Save updated favorites to localStorage
+        writeData();
       });
 
       $filmCard.appendChild($filmPoster);
@@ -94,7 +93,6 @@ async function showMovieDetails(movieId: string): Promise<void> {
     const movie: Data = await response.json();
     console.log('Movie data:', movie);
 
-    // Update the movie details section
     const $detailsContainer = document.querySelector(
       '.movie-details-container',
     ) as HTMLElement;
@@ -140,7 +138,6 @@ async function showMovieDetails(movieId: string): Promise<void> {
 
     viewSwap('movie-details');
 
-    // Show the details page and hide the filmography page
     const $filmographyView = document.querySelector(
       '[data-view="filmography"]',
     ) as HTMLElement;
@@ -151,7 +148,6 @@ async function showMovieDetails(movieId: string): Promise<void> {
     $filmographyView.classList.add('hidden');
     $movieDetailsView.classList.remove('hidden');
 
-    // Back button event
     const $backButton = document.querySelector('.back-button') as HTMLElement;
     $backButton.addEventListener('click', () => {
       $movieDetailsView.classList.add('hidden');
@@ -165,12 +161,15 @@ async function showMovieDetails(movieId: string): Promise<void> {
 let favorites: Favorite[] = [];
 
 function updateFavoritesPage(): void {
+  const $favoritesPageContainer = document.createElement('div');
+  $favoritesPageContainer.classList.add('favorites-page-container');
+
   const $favoritesContainer = document.querySelector(
     '.favorites-container',
   ) as HTMLElement;
   if (!$favoritesContainer) return;
 
-  $favoritesContainer.innerHTML = ''; // Clear existing content
+  $favoritesContainer.innerHTML = '';
 
   favorites.forEach((favorite) => {
     const $favoriteCard = document.createElement('div');
