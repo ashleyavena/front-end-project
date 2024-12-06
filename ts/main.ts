@@ -4,15 +4,15 @@ interface Data {
   image: string;
   location: string[];
   title: string;
-  originalTitle: string;
+  original_title: string;
   originalTitleRomanized: string;
   description: string;
   director: string;
   producer: string;
   url: string;
-  releaseDate: number;
-  runningTime: number;
-  rtScore: number;
+  release_date: number;
+  running_time: number;
+  rt_score: number;
 }
 
 interface Info {
@@ -102,6 +102,9 @@ async function showMovieDetails(movieId: string): Promise<void> {
       '.movie-poster',
     ) as HTMLImageElement;
     const $movieTitle = document.querySelector('.movie-title') as HTMLElement;
+    const $movieOriginalTitle = document.querySelector(
+      '.movie-original-title',
+    ) as HTMLElement;
     const $movieDescription = document.querySelector(
       '.movie-description',
     ) as HTMLElement;
@@ -123,15 +126,17 @@ async function showMovieDetails(movieId: string): Promise<void> {
 
     $moviePoster.src = movie.image ?? 'default image.png';
     $movieTitle.textContent = movie.title ?? 'default title.png';
+    $movieOriginalTitle.textContent =
+      movie.original_title ?? 'default desription.png';
     $movieDescription.textContent =
       movie.description ?? 'default desription.png';
     $movieDirector.textContent = movie.director ?? 'default director.png';
     $movieProducer.textContent = movie.producer ?? 'default producer.png';
     $movieReleaseDate.textContent = new Date(
-      movie.releaseDate,
+      movie.release_date,
     ).toLocaleDateString();
-    $movieRunningTime.textContent = `${movie.runningTime} minutes`;
-    // $movieRtScore.textContent = movie.rtScore.toString();
+    $movieRunningTime.textContent = `${movie.running_time} minutes`;
+    $movieRtScore.textContent = movie.rt_score.toString();
 
     viewSwap('movie-details');
 
@@ -192,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (storedFavorites) {
     favorites = JSON.parse(storedFavorites);
   }
+
   viewSwap(data.view);
   filmsData();
   updateFavoritesPage();
@@ -285,7 +291,7 @@ $contactTab.addEventListener('click', () => {
 const $filmIcon = document.querySelector('.fa-film');
 if (!$filmIcon) throw new Error('$filmIcon not found');
 
-const $favoritesIcon = document.querySelector('.fa-heart');
+const $favoritesIcon = document.querySelector('.fa-regular.fa-heart.icon');
 if (!$favoritesIcon) throw new Error('$favoritesIcon not found');
 
 const $contactIcon = document.querySelector('.fa-paper-plane');

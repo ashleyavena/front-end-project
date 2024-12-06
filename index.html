@@ -89,21 +89,35 @@
 
     <!-- Movie details container (initially hidden) -->
     <div class="movie-details-container hidden">
-      <div class="movie-details">
-        <img class="movie-poster" src="" alt="Movie Poster" />
-        <h2 class="movie-title"></h2>
-        <p class="movie-description"></p>
-        <p><strong>Director:</strong> <span class="movie-director"></span></p>
-        <p><strong>Producer:</strong> <span class="movie-producer"></span></p>
-        <p>
-          <strong>Release Date:</strong>
-          <span class="movie-release-date"></span>
-        </p>
-        <p>
-          <strong>Running Time:</strong>
-          <span class="movie-running-time"></span>
-        </p>
-        <p><strong>RT Score:</strong> <span class="movie-rt-score"></span></p>
+      <div class="movie-details-header-container">
+        <img
+          src="images/tumblr_135f8860e99cbb2d22dc92cb841f7544_d3daabb7_1280.jpg"
+          alt="flowerField"
+          class="movie-details-header-image" />
+        <div class="overlay-text cherry">filmography</div>
+      </div>
+
+      <div class="movie-details-row">
+        <div class="column movie-poster-column">
+          <img class="movie-poster" src="" alt="Movie Poster" />
+        </div>
+        <div class="column movie-description-column">
+          <h2 class="movie-title"></h2>
+          <h3 class="movie-original-title"></h3>
+          <p class="movie-description"></p>
+          <p><strong>Director:</strong> <span class="movie-director"></span></p>
+          <p><strong>Producer:</strong> <span class="movie-producer"></span></p>
+          <p>
+            <strong>Release Date:</strong>
+            <span class="movie-release-date"></span>
+          </p>
+          <p>
+            <strong>Running Time:</strong>
+            <span class="movie-running-time"></span>
+          </p>
+          <p><strong>RT Score:</strong> <span class="movie-rt-score"></span></p>
+        </div>
+
         <button class="back-button">Back to Filmography</button>
       </div>
     </div>

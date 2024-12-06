@@ -344,11 +344,6 @@ h4 {
 
   /* comment */
 
-  .filmography-container {
-    position: relative;
-    display: inline-block;
-  }
-
   .empty-heart {
     position: absolute;
     top: 15px;
@@ -381,6 +376,12 @@ h4 {
       2px 2px 5px rgba(0, 0, 0, 0.7),
       0 0 5px black;
   }
+
+  /*
+  .filmography-container {
+    position: relative;
+    display: inline-block;
+  } */
 
   .filmography-page-container {
     background-color: rgb(144, 194, 231);
@@ -455,30 +456,80 @@ h4 {
     display: none;
   }
 
+  /* desktop movie details */
+
   .movie-details-container {
+    background-color: #b4caee;
+    gap: 2rem;
+  }
+
+  .movie-details-header-container {
+    position: relative;
+  }
+
+  .movie-details-header-image {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .cherry {
+    justify-content: center;
+    letter-spacing: 2px;
+    text-shadow:
+      2px 2px 5px rgba(0, 0, 0, 0.7),
+      0 0 5px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  .movie-details-row {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: flex-start; /* Align items at the top */
-    gap: 2rem; /* Space between the poster and details */
-    padding: 2rem;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers all items */
+    gap: 1.5rem; /* Adds spacing between items */
+    padding: 1rem; /* Inner spacing within the container */
+  }
+
+  .column {
+    width: 100%; /* Makes columns stack full-width in mobile */
+    max-width: 600px; /* Optional: Restrict width on larger screens */
+    text-align: center; /* Center-aligns text in columns */
+  }
+
+  .movie-poster-column {
+    max-width: 250px;
+    margin: 0 auto; /* Centers the poster horizontally */
+  }
+
+  .movie-description-column {
+    width: 100%;
+    text-align: center; /* Centers text in the description */
   }
 
   .movie-poster {
-    max-width: 300px; /* Set a maximum width for the poster */
+    width: 100%;
     height: auto; /* Maintain aspect ratio */
+    display: block;
     border-radius: 8px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
   }
 
-  .movie-details {
-    flex: 1; /* Take up the remaining space for details */
-    display: flex;
-    flex-direction: column; /* Stack details vertically */
-    gap: 1rem; /* Space between details */
-  }
-
   .movie-title {
     font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .movie-original-title {
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
@@ -497,17 +548,19 @@ h4 {
 
   .back-button {
     align-self: flex-start; /* Align the button to the left */
-    padding: 0.5rem 1rem;
+    padding: 0.75rem;
     font-size: 1rem;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease; /* Transition for the transform effect */
   }
 
   .back-button:hover {
-    background-color: #0056b3;
+    background-color: #d16c9f;
+    transform: scale(1.05);
   }
 }
 

@@ -64,6 +64,7 @@ async function showMovieDetails(movieId) {
         const $detailsContainer = document.querySelector('.movie-details-container');
         const $moviePoster = document.querySelector('.movie-poster');
         const $movieTitle = document.querySelector('.movie-title');
+        const $movieOriginalTitle = document.querySelector('.movie-original-title');
         const $movieDescription = document.querySelector('.movie-description');
         const $movieDirector = document.querySelector('.movie-director');
         const $movieProducer = document.querySelector('.movie-producer');
@@ -72,13 +73,15 @@ async function showMovieDetails(movieId) {
         const $movieRtScore = document.querySelector('.movie-rt-score');
         $moviePoster.src = movie.image ?? 'default image.png';
         $movieTitle.textContent = movie.title ?? 'default title.png';
+        $movieOriginalTitle.textContent =
+            movie.original_title ?? 'default desription.png';
         $movieDescription.textContent =
             movie.description ?? 'default desription.png';
         $movieDirector.textContent = movie.director ?? 'default director.png';
         $movieProducer.textContent = movie.producer ?? 'default producer.png';
-        $movieReleaseDate.textContent = new Date(movie.releaseDate).toLocaleDateString();
-        $movieRunningTime.textContent = `${movie.runningTime} minutes`;
-        // $movieRtScore.textContent = movie.rtScore.toString();
+        $movieReleaseDate.textContent = new Date(movie.release_date).toLocaleDateString();
+        $movieRunningTime.textContent = `${movie.running_time} minutes`;
+        $movieRtScore.textContent = movie.rt_score.toString();
         viewSwap('movie-details');
         // Show the details page and hide the filmography page
         const $filmographyView = document.querySelector('[data-view="filmography"]');
@@ -201,7 +204,7 @@ $contactTab.addEventListener('click', () => {
 const $filmIcon = document.querySelector('.fa-film');
 if (!$filmIcon)
     throw new Error('$filmIcon not found');
-const $favoritesIcon = document.querySelector('.fa-heart');
+const $favoritesIcon = document.querySelector('.fa-regular.fa-heart.icon');
 if (!$favoritesIcon)
     throw new Error('$favoritesIcon not found');
 const $contactIcon = document.querySelector('.fa-paper-plane');
