@@ -16,7 +16,7 @@ As a fan of Studio Ghibli’s breathtaking animation and storytelling, I wanted 
 
 ## Live Demo
 
-Try the application live at [Ghibli Discovery]
+Try the application live at [Ghibli Discovery](http://localhost:5500/index.html#)
 
 ## Features
 
@@ -28,4 +28,4 @@ Try the application live at [Ghibli Discovery]
 
 ## Preview
 
-(![Ghibli Discovery Preview](ghibli%20preview.png))
+![Ghibli Discovery Preview](ghibli%20preview.png)
