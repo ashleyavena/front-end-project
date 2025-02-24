@@ -39,8 +39,8 @@ Try the application live at [Ghibli Discovery](http://localhost:5500/index.html#
 1. Clone the repository.
 
    ```shell
-   git clone https://github.com/ashleyavena/front-end-project
-   cd front-end-project
+   git clone https://github.com/ashleyavena/ghibli-discovery
+   cd ghibli-discovery
    ```
 
 1. Install all dependencies with NPM.
