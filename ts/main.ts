@@ -15,6 +15,7 @@ interface Data {
   rt_score: number;
 }
 
+// edit
 interface Info {
   data: Data[];
 }
