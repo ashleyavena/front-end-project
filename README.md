@@ -28,4 +28,4 @@ Try the application live at [Ghibli Discovery]
 
 ## Preview
 
-![Ghibli Discovery Preview]()
+(![Ghibli Discovery Preview](ghibli%20preview.png))
