@@ -16,6 +16,7 @@ interface Data {
 }
 
 // edit
+// 2nd change
 interface Info {
   data: Data[];
 }
